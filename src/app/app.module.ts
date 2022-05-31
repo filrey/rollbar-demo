@@ -1,16 +1,22 @@
-import { NgModule } from '@angular/core';
+import { NgModule,ErrorHandler  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { RollbarService, rollbarFactory, RollbarErrorHandler } from './rollbar';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: RollbarErrorHandler },
+    { provide: RollbarService, useFactory: rollbarFactory }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
