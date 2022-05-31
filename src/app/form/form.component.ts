@@ -11,6 +11,13 @@ import * as Rollbar from 'rollbar';
 export class FormComponent implements OnInit {
   constructor(@Inject(RollbarService) private rollbar: Rollbar) {}
 
+  firstName = '';
+  lastName = '';
+  address = '';
+  city = '';
+  state = '';
+  zip = '';
+
   rollbarInfo() {
     // Needs the rollbar object from the constructor.
     this.rollbar.info('angular test log');
